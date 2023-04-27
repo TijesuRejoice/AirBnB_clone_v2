@@ -5,7 +5,6 @@
 a script that starts a Flask web application in which
 one route accepts user input
 """
-
 from flask import Flask
 app = Flask(__name__)
 
@@ -23,10 +22,18 @@ def hbnb():
 
 
 @app.route("/c/<text>", strict_slashes=False)
-def message(text):
+def c_message(text):
     '''Display "C" followed by the text variable'''
     text = text.replace('_', ' ')
     return 'C %s' % text
+
+
+@app.route("/python", strict_slashes=False)
+@app.route("/python/<text>", strict_slashes=False)
+def py_message(text='is cool'):
+    '''Display "C" followed by the text variable'''
+    text = text.replace('_', ' ')
+    return 'Python %s' % text
 
 
 if __name__ == '__main__':
